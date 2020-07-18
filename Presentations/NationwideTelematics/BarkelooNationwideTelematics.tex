@@ -83,7 +83,8 @@ Datasets are loaded into pandas dataframes for further analysis
 \begin{itemize}
 \item  The median cut before leaves the longitude and latitude plots in a reasonable state.
 \item Still some very fast jumps which are coincident, typically, with a change in trip\_id (GPS drift while off)
-\item From this data and corresponding timestamps in local\_dtm plots of the speed $s = \frac{\Delta\text{Positions}}{\Delta\text{Time}}$ and acceleration $a = \frac{\Delta\text{Speed}}{\Delta\text{Time}}$ can be made
+\item Can calculate distance between any two points using the geodesic distance making use of geopy package
+\item From this data and corresponding timestamps in local\_dtm plots of the speed $s = \frac{\Delta\text{Position}}{\Delta\text{Time}}$ and acceleration $a = \frac{\Delta\text{Speed}}{\Delta\text{Time}}$ can be made
 \end{itemize}
 \centering
 \includegraphics[width=1.\textwidth]{Images/Image2.png}
@@ -106,95 +107,249 @@ Datasets are loaded into pandas dataframes for further analysis
 \end{itemize}
 }
 
-\frame{\frametitle{}
+\frame{\frametitle{Gross Feature Cleaning - Speed and Acceleration Plots}
 \begin{itemize}
-\item
+\item The clear erroneous events in the speed and acceleration curves are cleaned looking at large speed values ($>100$mph) using coincidence points with these that also correspond to accelerations that are not possible by the majority of cars ($>30$mph/s)
+\begin{itemize}
+\item After these cleaning steps have occured most of the obvious points have been removed
+\item Remaining oscillations are closer to the scale of the data
+\item To help deal with itinerant spikes, and general noise, a rolling average using a 3 event window will be used on speed and acceleration
 \end{itemize}
+\end{itemize}
+
 \centering
-\includegraphics[width=1.\textwidth]{Images/Image4.png}
+\includegraphics[width=.8\textwidth]{Images/Image4a.png}
 }
 
-\frame{\frametitle{}
+\frame{\frametitle{Speed, After Cleaning}
 \begin{itemize}
-\item
+\item Window size 3 average helps filter noise, still keeps large fast features
 \end{itemize}
 \centering
 \includegraphics[width=1.\textwidth]{Images/Image5.png}
 }
 
-\frame{\frametitle{}
+\frame{\frametitle{Acceleration, After Cleaning}
 \begin{itemize}
-\item
+\item Accel: Directly calculated from change in speed values
+\item AccelAvg: Calculated using the change in the rolling average of speed values
+\item AccelAvg3: Calculated using the rolling average of acceleration values
 \end{itemize}
+AccelAvg3 is the least spiking and as such will be used as the acceleration value going forward for threshold setting
 \centering
 \includegraphics[width=1.\textwidth]{Images/Image6.png}
 }
 
-\frame{\frametitle{}
+\subsection{Task 2: Threshold Setting}
+\frame{\frametitle{Task 2: Setting Hard Event Thresholds}
+Hard Braking/Acceleration Events
 \begin{itemize}
-\item
+\item Assume Average Acceleration is normal enough (mean = 0.07, std= 2.71) to consider positive and negative accelerations half-normal distributions $\rightarrow \sigma=\bar{a}\sqrt{\pi/2}$
+\begin{itemize}
+\item Positive Acceleration-  mean: 1.71 mph/s  std: 2.14 mph/s
+\item Negative Acceleration-  mean: -1.62 mph/s   std: -2.03 mph/s
 \end{itemize}
-\centering
-\includegraphics[width=1.\textwidth]{Images/Image7.png}
-}
-
-\frame{\frametitle{}
+\item Thresholds set at every point above 2 standard deviations away from the mean for the distributions
 \begin{itemize}
-\item
+\item Hard Acceleration: $>$5.99 mph/s
+\item Hard Braking: $<$-5.68 mph/s
+\end{itemize}
 \end{itemize}
 \centering
 \includegraphics[width=0.5\textwidth]{Images/Image8.png}
 }
 
-\frame{\frametitle{}
+\frame{\frametitle{Hard Event and Idle Time Definition}
+Hard Events
 \begin{itemize}
-\item
+\item Number of peaks beyond the threshold using the rolling average acceleration
+\item Using rolling average and looking for local peaks in the acceleration landscape limits multicounting of the same `Event'
+\end{itemize}
+Idle Time Definition
+\begin{itemize}
+\item Total time spent with rolling average speed $<$1mph
+\end{itemize}
+}
+
+\subsection{Task 3: Trip-by-Trip Summaries}
+\frame{\frametitle{Task 3: Trip-by-Trip Summaries}
+Trip-by-Trip Speed and Acceleration Plots
+\begin{itemize}
+\item Blue are raw values and Orange are rolling averages
 \end{itemize}
 \centering
-\includegraphics[width=0.7\textwidth]{Images/Image9.png}
+\includegraphics[width=1.\textwidth]{Images/Image7.png}
 }
 
 
-\frame{\frametitle{FCNC: What are we looking for? $t\bar{t}\rightarrow W (\rightarrow l \nu) b+ q\gamma$}
-\begin{itemize}
-\item Final state topology
-	\begin{itemize}
-	\item One Neutrino, from W
-	\item One Lepton, from W
-	\item One B-jet, SM top
-	\item \textbf{One Photon, FCNC Top}
-	\item One Jet, FCNC Top
-	\end{itemize}
-\end{itemize}
-}
 
-\frame{\frametitle{Background Processes}
-\begin{itemize}
-\item Due to all of the processes at hadron colliders it is important to model similar event topologies well.
-\item Major backgrounds include $t\bar{t}$, W+Jets, Z+Jets, + processes with an associated photon
-\end{itemize}
-%\centering
-%\includegraphics[width=0.7\textwidth]{../../ThesisImages/backgrounds.png}
-}
-
-\frame{\frametitle{Monte Carlo Generation}
-\begin{itemize}
-\item All of our MC data is put through a showering algorithm for propagation from final decay states
-\item Various showering algorithms are used at ATLAS - Pythia, Herwigg, etc.
-\item All of these will add radiative photons
-\item These events can be contained in other samples with explicit photons originating from the hard interaction
-\item Need to remove these events or risk double counting events
-\end{itemize}
-
+\frame{\frametitle{Trip Summaries}
+\centering
+\includegraphics[width=0.78\textwidth]{Images/Image9.png}
 }
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Part 2: Modeling}
+\frame{\frametitle{Part 2: Modeling - Simulated Dataset Overview}
+Summary of 30,000 vehicles 1Hz telematics datasets. 
+\begin{itemize}
+\item Vehicle - Effectively an index on the data
+\item Days - Number of days data was collected (365 for all)
+\item Distance - Total number of miles vehicle was driven during data collection
+\item HardBrakes - Number of hard braking events detected
+\item HardAccelerations - Number of hard acceleration events detected
+\item NightTime\_Pct - Percentage of total miles driven at night
+\item VehicleType - str description of type of vehicle
+\item Loss - Indicator if vehicle has been in a collision
+\end{itemize}
+Want to build a model that will optimize recognition of Loss events
+%\centering
+%\includegraphics[width=0.7\textwidth]{../../ThesisImages/backgrounds.png}
+}
 
-\subsection{Object Preselection Cuts}
+\subsection{Task 4: Statistical Significance Between Vehicle Types}
 
-\frame{\frametitle{}
+\frame{\frametitle{Task 4: Statistical Significance of Loss Between Vehicle Types}
+\begin{itemize}
+\item  Assume loss populations are sampled from a binomial distribution with probablity LossPerType/TotalPerType a z-test can be conducted to determine if the null hypothesis (distributions are sampled from the same distribution) can be rejected.
+\item For a significance $\alpha = 0.05$ a z-value greater than the critical value of $z_c >1.64$ implies rejection of the null hypothesis
+\item For repeated test the Look-Elsewhere effect should also be taken into consideration, doing this changes critical value $z_c > 2.64$
+\end{itemize}
+
+\centering
+\begin{columns}
+\begin{column}{0.5\textwidth}
+$z   = \frac{p_1 - p_2}{\sqrt{p (1-p)(1/n_1 + 1/n_2)}}$ \\
+\end{column}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=0.8\textwidth]{Images/Image10.png}
+\end{column}
+\end{columns}
+}
+
+\frame{\frametitle{Statsitcal Significance Between Vehicle Types}
+The conclusions to be drawn depend how liberal the definition of statistical significance being used is \\ 
+The use of p$<$0.05 is somewhat arbitrary but is what will be used here as it is a standard choice of convention
+\begin{itemize}
+\item \fbox{z value for Car and Minivan: 2.48} 
+\item z value for Car and SUV: 4.19 
+\item z value for Car and Truck: 2.96 
+\item z value for Minivan and SUV: 4.59 
+\item z value for Minivan and Truck: 3.92 
+\item \fbox{z value for SUV and Truck: 1.62} 
+\end{itemize}
+The null hypothesis cannot be rejected for the combination of Cars and Minivans and the combination of SUVs and Trucks \\
+The implication then is that there are 2 distributions being sampled for these simulated events
+}
+
+\subsection{Task 5: Hard Brake and Acceleration Importance }
+
+\frame{\frametitle{Task 5: Are Hard Brakes and Accelerations equally important in predicting risk?}
+Basic stats about the HardBrakes and HardAccelerations per Loss event and comparing to NoLoss events can give us insight on the separation power of these variables
+
+Loss Events:
+\begin{itemize}
+\item HardBrakes - mean: 170.24,  median: 98
+\item HardAccelerations - mean: 138.25, median: 68
+\end{itemize}
+
+NoLoss Events:
+\begin{itemize}
+\item HardBrakes - mean: 167.44,  median: 98
+\item HardAccelerations - mean: 104.53, median: 56
+\end{itemize}
+
+Just looking at the median values of these loss events leads to the conclusion that Loss events have more HardAccelerations but a similar number of HardBrakes to NoLoss events \\
+This matches my naive intution to be an indication of more aggressive driving
+%\centering
+%\includegraphics[width=0.7\textwidth]{../../ThesisImages/backgrounds.png}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Model Building}
+
+\frame{\frametitle{Model Building}
+Primarily employing densely connected feed forward neural networks for event classification
+\begin{itemize}
+\item 1 input layer with all potentially useful features (Distance, HardBrakes, HardAccelerations, NightTime\_Pct, VehicleType)
+\item 2 hidden layers with 20 nodes each
+\item Each hidden layer has 20\% dropout to avoid overfitting
+\item 1 output layer
+\item Activation Function: ReLU on input nodes and hidden layers with Sigmoid on the output layer
+\item Optimization Function: Adam (Adaptive moment estimation)
+\item Loss Function: Binary Cross-entropy
+\end{itemize}
+A training (64\%)/testing(16\%)/validation(16\%) random set split was done to help ensure unbiased results
+%\centering
+%\includegraphics[width=0.7\textwidth]{../../ThesisImages/backgrounds.png}
+}
+
+\frame{\frametitle{Naive approach Neural Network}
+\begin{itemize}
+\item Naively we could just train a neural network on the data classes as given
+\item With enough separation power i.e., variables distinct enough in each class this can work
+\item Not the case here, only a few variables as inputs with alot of distribution overlap
+\item This would then be expected to fail with a total accuracy that trends toward the class representation of the minority class which is seen here
+\end{itemize}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=0.9\textwidth]{Images/Image11.png}
+\end{column}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=0.9\textwidth]{Images/Image12.png}
+\end{column}
+\end{columns}
+}
+
+\frame{\frametitle{Neural Network with ADASYN Upsampling}
+\begin{itemize}
+\item In order to ensure equal class representation the minority class is upscaled using synthetic data created using ADASYN over-sampling
+\end{itemize}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=0.9\textwidth]{Images/Image13.png}
+\end{column}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=0.9\textwidth]{Images/Image14.png}
+\end{column}
+\end{columns}
+Loss Events P(Loss Event): mean: 0.509, std: 0.079 \\
+NoLoss Events P(LossEvent): mean: 0.486, std: 0.084 \\
+Loss Event Accuracy: 62.1\%
+}
+
+\frame{\frametitle{Neural Network with SMOTE Upsampling}
+\begin{itemize}
+\item Another network was created and trained using SMOTE over-sampling with similar results
+\end{itemize}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=0.9\textwidth]{Images/Image15.png}
+\end{column}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=0.9\textwidth]{Images/Image16.png}
+\end{column}
+\end{columns}
+Loss Events P(Loss Event): mean: 0.522, std: 0.084 \\
+NoLoss Events P(LossEvent): mean: 0.493, std: 0.085 \\
+Loss Event Accuracy: 58.9\%
+}
+
+\frame{\frametitle{Model Comments}
+\begin{itemize}
+\item  Neural networks have been created and trained on a limited set of input variable with success in determination of Loss events
+\item The addition of further independent input variables would help the separation of the neural network greatly.
+\item A bifurcation of the distributions is starting to occur with the ADASYN network, more input variables and events is likely to cause a major splitting of the distribution into likely Loss events and likely NoLoss events \\
+\item Boosted decision tree (BDT) models were also employeed in the Jupyter notebook to less successful ends
+\end{itemize}
+}
+
+
+\subsection{Data Set Enhancement}
+
+\frame{\frametitle{Additional Research Questions}
 \begin{itemize}
 \item
 \end{itemize}
@@ -202,49 +357,17 @@ Datasets are loaded into pandas dataframes for further analysis
 %\includegraphics[width=0.7\textwidth]{../../ThesisImages/backgrounds.png}
 }
 
-\frame{\frametitle{Object Preselection}
+\frame{\frametitle{Additional Dataset Attributes}
 \begin{itemize}
-\item We preselect events with objects that look like our expected topology
-\item Reminder that I require:
-	\begin{itemize}
-	\item Exactly one lepton (e or $\mu$) $\geq$ 28 GeV
-	\item Exactly one Good photon $\geq$ 25GeV
-	\item Missing Transverse Energy $\geq$ 30GeV
-	\item $\geq 2$ Jets (at least one being b-tagged)
-	\end{itemize}
-\item All following plots will have signal scaled to $0.2\%$ of nonallhadronic $\sigma_{t\bar{t}}$, MC scaled to $36.07fb^{-1}$
-\item Only electron channel shown.  Similar results for the muon channel are seen.
-\end{itemize}
-}
-
-
-\subsection{Analysis}
-
-\frame{\frametitle{Background Processes}
-\begin{itemize}
-\item Due to all of the processes at hadron colliders it is important to model similar event topologies well.
-\item Major backgrounds include $t\bar{t}$, W+Jets, Z+Jets, + processes with an associated photon
+\item
 \end{itemize}
 %\centering
 %\includegraphics[width=0.7\textwidth]{../../ThesisImages/backgrounds.png}
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Model Building}
 
-\frame{\frametitle{Background Processes}
+\frame{\frametitle{Estimate Sample Size Needed for Additional Research}
 \begin{itemize}
-\item Due to all of the processes at hadron colliders it is important to model similar event topologies well.
-\item Major backgrounds include $t\bar{t}$, W+Jets, Z+Jets, + processes with an associated photon
-\end{itemize}
-%\centering
-%\includegraphics[width=0.7\textwidth]{../../ThesisImages/backgrounds.png}
-}
-\subsection{Data Set Enhancement}
-
-\frame{\frametitle{Background Processes}
-\begin{itemize}
-\item Due to all of the processes at hadron colliders it is important to model similar event topologies well.
-\item Major backgrounds include $t\bar{t}$, W+Jets, Z+Jets, + processes with an associated photon
+\item
 \end{itemize}
 %\centering
 %\includegraphics[width=0.7\textwidth]{../../ThesisImages/backgrounds.png}
@@ -254,23 +377,16 @@ Datasets are loaded into pandas dataframes for further analysis
 \frame{\frametitle{Conclusion, Outlook}
 \begin{itemize}
 \item Orthogonal validation/control regions are in development
-\item Data grid run complete, need to incorporate into CR/VR plots
-\item Next grid run will include a couple of looser regions for CR/VRs 
-	\begin{itemize}
-	\item 0 Photon Samples for Backgrounds with no Real Photons
-	\item 0 BJet Samples - possibly for WJets region
-	\end{itemize}
-\item Top Group - Pushing for MVA, want to start investigations using these techniques 
 \end{itemize}
 }
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 	
-\appendix
-\section{Backup}
-\frame{\frametitle{Backup}
-}
+%\appendix
+%\section{Backup}
+%\frame{\frametitle{Backup}
+%}
 \end{document}
 
 %36.070

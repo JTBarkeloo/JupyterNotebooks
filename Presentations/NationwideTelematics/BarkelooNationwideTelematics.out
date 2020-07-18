@@ -1,10 +1,10 @@
 \BOOKMARK [2][]{Outline0.1}{Part 1: GPS Data - Analysis}{}% 1
 \BOOKMARK [3][]{Outline0.1.1.5}{Task 1: Data Cleaning}{Outline0.1}% 2
-\BOOKMARK [2][]{Outline0.2}{Part 2: Modeling}{}% 3
-\BOOKMARK [3][]{Outline0.2.1.18}{Object Preselection Cuts}{Outline0.2}% 4
-\BOOKMARK [3][]{Outline0.2.2.20}{Analysis}{Outline0.2}% 5
-\BOOKMARK [3][]{Outline0.2.3.21}{Model Building}{Outline0.2}% 6
-\BOOKMARK [3][]{Outline0.2.4.22}{Data Set Enhancement}{Outline0.2}% 7
-\BOOKMARK [2][]{Outline0.3}{Conclusion}{}% 8
-\BOOKMARK [1][]{Outline1}{Appendix}{}% 9
-\BOOKMARK [2][]{Outline1.4}{Backup}{Outline1}% 10
+\BOOKMARK [3][]{Outline0.1.2.12}{Task 2: Threshold Setting}{Outline0.1}% 3
+\BOOKMARK [3][]{Outline0.1.3.14}{Task 3: Trip-by-Trip Summaries}{Outline0.1}% 4
+\BOOKMARK [2][]{Outline0.2}{Part 2: Modeling}{}% 5
+\BOOKMARK [3][]{Outline0.2.1.17}{Task 4: Statistical Significance Between Vehicle Types}{Outline0.2}% 6
+\BOOKMARK [3][]{Outline0.2.2.19}{Task 5: Hard Brake and Acceleration Importance }{Outline0.2}% 7
+\BOOKMARK [3][]{Outline0.2.3.20}{Model Building}{Outline0.2}% 8
+\BOOKMARK [3][]{Outline0.2.4.25}{Data Set Enhancement}{Outline0.2}% 9
+\BOOKMARK [2][]{Outline0.3}{Conclusion}{}% 10

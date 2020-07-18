@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2020.5.12)  18 JUL 2020 00:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2020.5.12)  18 JUL 2020 15:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -877,7 +877,7 @@ thkerncmss.
 ] [4
 
 ]
-<Images/Image1.png, id=110, 405.515pt x 265.99374pt>
+<Images/Image1.png, id=114, 405.515pt x 265.99374pt>
 File: Images/Image1.png Graphic file (type png)
 <use Images/Image1.png>
 Package pdftex.def Info: Images/Image1.png  used on input line 80.
@@ -889,96 +889,155 @@ Overfull \vbox (5.79936pt too high) detected at line 80
 [5
 
  <./Images/Image1.png>]
-<Images/Image2.png, id=123, 916.42375pt x 337.26pt>
+<Images/Image2.png, id=129, 916.42375pt x 337.26pt>
 File: Images/Image2.png Graphic file (type png)
 <use Images/Image2.png>
-Package pdftex.def Info: Images/Image2.png  used on input line 90.
+Package pdftex.def Info: Images/Image2.png  used on input line 91.
 (pdftex.def)             Requested size: 307.28987pt x 113.087pt.
- [6
+
+Overfull \vbox (1.8024pt too high) detected at line 91
+ []
+
+[6
 
  <./Images/Image2.png>]
-<Images/Image3.png, id=136, 907.39pt x 609.27625pt>
+<Images/Image3.png, id=144, 907.39pt x 609.27625pt>
 File: Images/Image3.png Graphic file (type png)
 <use Images/Image3.png>
-Package pdftex.def Info: Images/Image3.png  used on input line 95.
+Package pdftex.def Info: Images/Image3.png  used on input line 96.
 (pdftex.def)             Requested size: 307.28987pt x 206.33305pt.
  [7
 
- <./Images/Image3.png>]
-[8
+ <./Images/Image3.png>] [8
 
 ]
-<Images/Image4.png, id=159, 908.39375pt x 609.27625pt>
-File: Images/Image4.png Graphic file (type png)
-<use Images/Image4.png>
-Package pdftex.def Info: Images/Image4.png  used on input line 115.
-(pdftex.def)             Requested size: 307.28987pt x 206.10063pt.
+<Images/Image4a.png, id=172, 681.29532pt x 231.11343pt>
+File: Images/Image4a.png Graphic file (type png)
+<use Images/Image4a.png>
+Package pdftex.def Info: Images/Image4a.png  used on input line 122.
+(pdftex.def)             Requested size: 245.83282pt x 83.3912pt.
  [9
 
- <./Images/Image4.png>]
-<Images/Image5.png, id=172, 1457.445pt x 610.28pt>
+ <./Images/Image4a.png>]
+<Images/Image5.png, id=187, 1457.445pt x 610.28pt>
 File: Images/Image5.png Graphic file (type png)
 <use Images/Image5.png>
-Package pdftex.def Info: Images/Image5.png  used on input line 123.
+Package pdftex.def Info: Images/Image5.png  used on input line 130.
 (pdftex.def)             Requested size: 307.28987pt x 128.66544pt.
  [10
 
  <./Images/Image5.png>]
-<Images/Image6.png, id=184, 1459.4525pt x 594.22pt>
+<Images/Image6.png, id=201, 1459.4525pt x 594.22pt>
 File: Images/Image6.png Graphic file (type png)
 <use Images/Image6.png>
-Package pdftex.def Info: Images/Image6.png  used on input line 131.
+Package pdftex.def Info: Images/Image6.png  used on input line 141.
 (pdftex.def)             Requested size: 307.28987pt x 125.10722pt.
- [11
+
+Overfull \vbox (0.31865pt too high) detected at line 141
+ []
+
+[11
 
  <./Images/Image6.png>]
-<Images/Image7.png, id=196, 1374.63562pt x 554.07pt>
-File: Images/Image7.png Graphic file (type png)
-<use Images/Image7.png>
-Package pdftex.def Info: Images/Image7.png  used on input line 139.
-(pdftex.def)             Requested size: 307.28987pt x 123.8572pt.
- [12
-
- <./Images/Image7.png>]
-<Images/Image8.png, id=208, 396.48125pt x 248.93pt>
+<Images/Image8.png, id=215, 399.4925pt x 265.99374pt>
 File: Images/Image8.png Graphic file (type png)
 <use Images/Image8.png>
-Package pdftex.def Info: Images/Image8.png  used on input line 147.
-(pdftex.def)             Requested size: 153.64493pt x 96.46696pt.
- [13
+Package pdftex.def Info: Images/Image8.png  used on input line 160.
+(pdftex.def)             Requested size: 153.64493pt x 102.30034pt.
 
- <./Images/Image8.png>]
-<Images/Image9.png, id=221, 629.35126pt x 571.38469pt>
-File: Images/Image9.png Graphic file (type png)
-<use Images/Image9.png>
-Package pdftex.def Info: Images/Image9.png  used on input line 155.
-(pdftex.def)             Requested size: 215.10196pt x 195.2883pt.
+Overfull \vbox (6.66733pt too high) detected at line 160
+ []
+
+[12
+
+ <./Images/Image8.png>] [13
+
+]
+<Images/Image7.png, id=244, 1374.63562pt x 554.07pt>
+File: Images/Image7.png Graphic file (type png)
+<use Images/Image7.png>
+Package pdftex.def Info: Images/Image7.png  used on input line 182.
+(pdftex.def)             Requested size: 307.28987pt x 123.8572pt.
  [14
 
- <./Images/Image9.png>] [15
+ <./Images/Image7.png>]
+<Images/Image9.png, id=257, 629.35126pt x 571.38469pt>
+File: Images/Image9.png Graphic file (type png)
+<use Images/Image9.png>
+Package pdftex.def Info: Images/Image9.png  used on input line 189.
+(pdftex.def)             Requested size: 239.68571pt x 217.60796pt.
 
-] [16
+Overfull \vbox (5.87494pt too high) detected at line 189
+ []
 
-] [17
+[15
 
-] [18
+ <./Images/Image9.png>] [16
+
+]
+<Images/Image10.png, id=288, 258.9675pt x 161.10187pt>
+File: Images/Image10.png Graphic file (type png)
+<use Images/Image10.png>
+Package pdftex.def Info: Images/Image10.png  used on input line 229.
+(pdftex.def)             Requested size: 122.9164pt x 76.46518pt.
+ [17
+
+ <./Images/Image10.png>] [18
 
 ] [19
 
 ] [20
 
-] [21
-
-] [22
-
-] [23
-
 ]
+<Images/Image11.png, id=341, 393.47pt x 262.9825pt>
+File: Images/Image11.png Graphic file (type png)
+<use Images/Image11.png>
+Package pdftex.def Info: Images/Image11.png  used on input line 304.
+(pdftex.def)             Requested size: 138.2795pt x 92.41843pt.
+<Images/Image12.png, id=342, 399.4925pt x 265.99374pt>
+File: Images/Image12.png Graphic file (type png)
+<use Images/Image12.png>
+Package pdftex.def Info: Images/Image12.png  used on input line 304.
+(pdftex.def)             Requested size: 138.2795pt x 92.06828pt.
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\translate ' on input line 270.
+[21
 
+ <./Images/image11.png> <./Images/Image12.png>]
+<Images/Image13.png, id=358, 387.4475pt x 262.9825pt>
+File: Images/Image13.png Graphic file (type png)
+<use Images/Image13.png>
+Package pdftex.def Info: Images/Image13.png  used on input line 321.
+(pdftex.def)             Requested size: 138.2795pt x 93.85902pt.
+<Images/Image14.png, id=359, 399.4925pt x 265.99374pt>
+File: Images/Image14.png Graphic file (type png)
+<use Images/Image14.png>
+Package pdftex.def Info: Images/Image14.png  used on input line 321.
+(pdftex.def)             Requested size: 138.2795pt x 92.06828pt.
+ [22
+
+ <./Images/image13.png> <./Images/image14.png>]
+<Images/Image15.png, id=375, 393.47pt x 264.99pt>
+File: Images/Image15.png Graphic file (type png)
+<use Images/Image15.png>
+Package pdftex.def Info: Images/Image15.png  used on input line 338.
+(pdftex.def)             Requested size: 138.2795pt x 93.12392pt.
+<Images/Image16.png, id=376, 382.42876pt x 248.93pt>
+File: Images/Image16.png Graphic file (type png)
+<use Images/Image16.png>
+Package pdftex.def Info: Images/Image16.png  used on input line 338.
+(pdftex.def)             Requested size: 138.2795pt x 90.00975pt.
+ [23
+
+ <./Images/image15.png> <./Images/image16.png>]
 [24
+
+] [25
+
+] [26
+
+] [27
+
+] [28
 
 ]
 \tf@nav=\write6
@@ -990,21 +1049,28 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 \tf@snm=\write8
 \openout8 = `BarkelooNationwideTelematics.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 274.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 274.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 391.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 391.
  (./BarkelooNationwideTelematics.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 274.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 274.
-Package rerunfilecheck Info: File `BarkelooNationwideTelematics.out' has not ch
-anged.
-(rerunfilecheck)             Checksum: A707B09FFE1B5EDAEC15C489785A0AE3;585.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 391.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 391.
+
+
+Package rerunfilecheck Warning: File `BarkelooNationwideTelematics.out' has cha
+nged.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `BarkelooNationwideTelematics.out':
+(rerunfilecheck)             Before: F50B09522AC3E52BA72642B919A900F4;719
+(rerunfilecheck)             After:  6E01FF50B270AEF45FBCCD56F05568EC;719.
  ) 
 Here is how much of TeX's memory you used:
- 18428 strings out of 492616
- 349215 string characters out of 6132783
- 425123 words of memory out of 5000000
- 21861 multiletter control sequences out of 15000+600000
- 13889 words of font info for 51 fonts, out of 8000000 for 9000
+ 18466 strings out of 492616
+ 349978 string characters out of 6132783
+ 426117 words of memory out of 5000000
+ 21884 multiletter control sequences out of 15000+600000
+ 13595 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,19n,55p,812b,563s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{https://github.com/JTBarkeloo/JupyterNotebooks/bl
@@ -1015,24 +1081,25 @@ pdfTeX warning (dest): name{https://github.com/JTBarkeloo/JupyterNotebooks/blob
 /master/BarkelooNationwideAssessmentPart1.ipynb} has been referenced but does n
 ot exist, replaced by a fixed one
 
-<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texli
-ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2018/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2018/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2018/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmss12.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmss8.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmss9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx1
-0.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb><c
-:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb><c:/texliv
-e/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb><c:/texlive/2018/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2018/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/a
-msfonts/symbols/msam10.pfb>
-Output written on BarkelooNationwideTelematics.pdf (24 pages, 1050978 bytes).
+pdfTeX warning (dest): name{Outline0.2.4.24} has been referenced but does not e
+xist, replaced by a fixed one
+
+<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texli
+ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2018/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2018/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2018/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmss12.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmss8.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.p
+fb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb><c:/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb><c:/texlive/20
+18/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2018/texmf-dist/fonts
+/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on BarkelooNationwideTelematics.pdf (28 pages, 1107755 bytes).
 PDF statistics:
- 416 PDF objects out of 1000 (max. 8388607)
- 344 compressed objects within 4 object streams
- 61 named destinations out of 1000 (max. 500000)
- 168 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 514 PDF objects out of 1000 (max. 8388607)
+ 425 compressed objects within 5 object streams
+ 70 named destinations out of 1000 (max. 500000)
+ 203 words of extra memory for PDF output out of 10000 (max. 10000000)
 
