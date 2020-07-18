@@ -28,38 +28,82 @@
 %\date{April 26, 2018}
 \frame{\titlepage}
 \frame{\frametitle{Table of Contents}\tableofcontents[hidesubsections]}
-\section{Part 1: GPS Data}
 
-\subsection{Analysis}
-
-\frame{\frametitle{}
+\frame{\frametitle{Code location for further fleshed out examples}
 \begin{itemize}
-\item
+\item All code for these exercises can be found via these links as ipython/jupyter notebooks located on my github in addition to attachments sent with with the presentation
+
+\begin{itemize}
+\item Part 1: \hyperlink{https://github.com/JTBarkeloo/JupyterNotebooks/blob/master/BarkelooNationwideAssessmentPart1.ipynb}{github: BarkelooNationwideAssessmentPart1.ipynp} 
+
+\item Part 2:  \hyperlink{https://github.com/JTBarkeloo/JupyterNotebooks/blob/master/BarkelooNationwideAssessmentPart2.ipynb}{github: BarkelooNationwideAssessmentPart2.ipynp}
+\end{itemize}
 \end{itemize}
 }
 
-\frame{\frametitle{}
+\section{Part 1: GPS Data - Analysis}
+\frame{\frametitle{Tasks to be Completed}
+Analysis Task:
 \begin{itemize}
-\item
+\item 1: Data Cleaning
+\item 2: Setting of hard braking and acceleration tresholds based on the data
+\item 3: Trip-by-trip Analysis and Summary
+\end{itemize}
+
+Data Set Overview:
+\begin{itemize}
+\item 9687 rows of 4 variables including:
+\begin{itemize}
+\item  trip\_id: a trip number identifier 
+\item local\_dtm: a datetime timestamp of the event entry
+\item latitude: latitudinal coordinate
+\item longitude: longitudinal coordinate
+\end{itemize}
+\end{itemize}
+Datasets are loaded into pandas dataframes for further analysis
+}
+
+\subsection{Task 1: Data Cleaning}
+
+\frame{\frametitle{Data Cleaning, Gross Features}
+\begin{itemize}
+\item 3 Large unphysical features occur in the dataset (teleportation across the globe for 2-4 seconds)
+\item These events are pruned by requiring the latitude and longitude are within $2^{\circ}$ of the median for the data set. 
+\item This includes an area on the order of the state of Ohio
+\begin{itemize}
+\item Assumption: The sensors are used for checking daily driving habits and not long, rare, road trips.
+\item No other points are removed under this cut just these large outliers but if this assumption is false (i.e. long-haul truck drivers use these) this would need to be adapted
+\end{itemize}
 \end{itemize}
 \centering
-\includegraphics[width=0.7\textwidth]{Images/Image1.png}
+\includegraphics[width=0.5\textwidth]{Images/Image1.png}
 }
 
-\frame{\frametitle{}
+\frame{\frametitle{Result of Gross Cleaning}
 \begin{itemize}
-\item
+\item  The median cut before leaves the longitude and latitude plots in a reasonable state.
+\item Still some very fast jumps which are coincident, typically, with a change in trip\_id (GPS drift while off)
+\item From this data and corresponding timestamps in local\_dtm plots of the speed $s = \frac{\Delta\text{Positions}}{\Delta\text{Time}}$ and acceleration $a = \frac{\Delta\text{Speed}}{\Delta\text{Time}}$ can be made
 \end{itemize}
 \centering
 \includegraphics[width=1.\textwidth]{Images/Image2.png}
 }
 
-\frame{\frametitle{}
-\begin{itemize}
-\item
-\end{itemize}
+\frame{\frametitle{Further Cleaning - $\Delta$Position, $\Delta$Time, Speed, Acceleration}
 \centering
 \includegraphics[width=1.\textwidth]{Images/Image3.png}
+}
+
+\frame{\frametitle{More Features to be Cleaned}
+\begin{itemize}
+\item From $\Delta$Position, $\Delta$Time we see the large number of drifts which account for the gps drift from trip differences
+\item 15 events: These jumps will not be an issue when analyzing trip by trip as the change in position starts from the first point of the trip
+\item Speed and Acceleration plots show an additional 3 further unphysical events.  These are resultant from small gps errors for a few seconds and need to be dealt with
+\item Another issue comes when $\Delta$Time between two events is 0 i.e., if the frequency drops below 1Hz and two readings are taken within a second.
+\begin{itemize}
+\item 24 events: A 0th order approach is taken to these points and only the first is kept.  An alternative would be averaging the latitude/longitude for those points.  This would be a change within the same second and as such will not have much of an effect that isnt then averaged out in the acceleration
+\end{itemize}
+\end{itemize}
 }
 
 \frame{\frametitle{}

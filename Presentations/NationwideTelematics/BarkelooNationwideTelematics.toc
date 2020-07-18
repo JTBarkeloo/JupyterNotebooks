@@ -1,9 +1,9 @@
-\beamer@sectionintoc {1}{Part 1: GPS Data}{3}{0}{1}
-\beamer@subsectionintoc {1}{1}{Analysis}{3}{0}{1}
-\beamer@sectionintoc {2}{Part 2: Modeling}{16}{0}{2}
-\beamer@subsectionintoc {2}{1}{Object Preselection Cuts}{16}{0}{2}
-\beamer@subsectionintoc {2}{2}{Analysis}{18}{0}{2}
-\beamer@subsectionintoc {2}{3}{Model Building}{19}{0}{2}
-\beamer@subsectionintoc {2}{4}{Data Set Enhancement}{20}{0}{2}
-\beamer@sectionintoc {3}{Conclusion}{21}{0}{3}
-\beamer@sectionintoc {4}{Backup}{22}{1}{4}
+\beamer@sectionintoc {1}{Part 1: GPS Data - Analysis}{4}{0}{1}
+\beamer@subsectionintoc {1}{1}{Task 1: Data Cleaning}{5}{0}{1}
+\beamer@sectionintoc {2}{Part 2: Modeling}{18}{0}{2}
+\beamer@subsectionintoc {2}{1}{Object Preselection Cuts}{18}{0}{2}
+\beamer@subsectionintoc {2}{2}{Analysis}{20}{0}{2}
+\beamer@subsectionintoc {2}{3}{Model Building}{21}{0}{2}
+\beamer@subsectionintoc {2}{4}{Data Set Enhancement}{22}{0}{2}
+\beamer@sectionintoc {3}{Conclusion}{23}{0}{3}
+\beamer@sectionintoc {4}{Backup}{24}{1}{4}
