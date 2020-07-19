@@ -6,5 +6,7 @@
 \beamer@subsectionintoc {2}{1}{Task 4: Statistical Significance Between Vehicle Types}{17}{0}{2}
 \beamer@subsectionintoc {2}{2}{Task 5: Hard Brake and Acceleration Importance }{19}{0}{2}
 \beamer@subsectionintoc {2}{3}{Model Building}{20}{0}{2}
-\beamer@subsectionintoc {2}{4}{Data Set Enhancement}{25}{0}{2}
-\beamer@sectionintoc {3}{Conclusion}{28}{0}{3}
+\beamer@sectionintoc {3}{Data Set Enhancement}{25}{0}{3}
+\beamer@subsectionintoc {3}{1}{Additional Research Questions}{25}{0}{3}
+\beamer@subsectionintoc {3}{2}{Additional Dataset Attributes}{28}{0}{3}
+\beamer@subsectionintoc {3}{3}{Estimate of Sample Size for Additional Research}{29}{0}{3}
