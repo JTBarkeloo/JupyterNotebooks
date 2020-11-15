@@ -1,12 +1,5 @@
-\beamer@sectionintoc {1}{Part 1: GPS Data - Analysis}{4}{0}{1}
-\beamer@subsectionintoc {1}{1}{Task 1: Data Cleaning}{5}{0}{1}
-\beamer@subsectionintoc {1}{2}{Task 2: Threshold Setting}{12}{0}{1}
-\beamer@subsectionintoc {1}{3}{Task 3: Trip-by-Trip Summaries}{14}{0}{1}
-\beamer@sectionintoc {2}{Part 2: Modeling}{16}{0}{2}
-\beamer@subsectionintoc {2}{1}{Task 4: Statistical Significance Between Vehicle Types}{17}{0}{2}
-\beamer@subsectionintoc {2}{2}{Task 5: Hard Brake and Acceleration Importance }{19}{0}{2}
-\beamer@subsectionintoc {2}{3}{Model Building}{20}{0}{2}
-\beamer@sectionintoc {3}{Data Set Enhancement}{25}{0}{3}
-\beamer@subsectionintoc {3}{1}{Additional Research Questions}{25}{0}{3}
-\beamer@subsectionintoc {3}{2}{Additional Dataset Attributes}{28}{0}{3}
-\beamer@subsectionintoc {3}{3}{Estimate of Sample Size for Additional Research}{29}{0}{3}
+\beamer@sectionintoc {1}{Exploratory Analysis}{4}{0}{1}
+\beamer@sectionintoc {2}{Model Building}{5}{0}{2}
+\beamer@subsectionintoc {2}{1}{Model Building}{7}{0}{2}
+\beamer@sectionintoc {3}{Model Assessment}{11}{0}{3}
+\beamer@subsectionintoc {3}{1}{Model Limitations}{11}{0}{3}
