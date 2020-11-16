@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2020.5.12)  15 NOV 2020 19:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2020.5.12)  15 NOV 2020 21:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -877,60 +877,108 @@ thkerncmss.
 [4
 
 ]
-<Images/Image2.png, id=82, 399.4925pt x 268.00125pt>
+<Images/Image2.png, id=90, 399.4925pt x 268.00125pt>
 File: Images/Image2.png Graphic file (type png)
 <use Images/Image2.png>
 Package pdftex.def Info: Images/Image2.png  used on input line 75.
 (pdftex.def)             Requested size: 138.2795pt x 92.76314pt.
-<Images/Image1.png, id=84, 393.47pt x 265.99374pt>
+<Images/Image1.png, id=92, 393.47pt x 265.99374pt>
 File: Images/Image1.png Graphic file (type png)
 <use Images/Image1.png>
 Package pdftex.def Info: Images/Image1.png  used on input line 75.
 (pdftex.def)             Requested size: 138.2795pt x 93.47665pt.
-<Images/Image5.png, id=85, 390.45876pt x 262.9825pt>
-File: Images/Image5.png Graphic file (type png)
-<use Images/Image5.png>
-Package pdftex.def Info: Images/Image5.png  used on input line 75.
-(pdftex.def)             Requested size: 138.2795pt x 93.1327pt.
-<Images/Image3.png, id=86, 393.47pt x 265.99374pt>
+<Images/Image4.png, id=93, 438.63875pt x 326.21875pt>
+File: Images/Image4.png Graphic file (type png)
+<use Images/Image4.png>
+Package pdftex.def Info: Images/Image4.png  used on input line 75.
+(pdftex.def)             Requested size: 122.9164pt x 91.41031pt.
+<Images/Image3.png, id=94, 393.47pt x 265.99374pt>
 File: Images/Image3.png Graphic file (type png)
 <use Images/Image3.png>
 Package pdftex.def Info: Images/Image3.png  used on input line 75.
 (pdftex.def)             Requested size: 138.2795pt x 93.47665pt.
  [5
 
- <./Images/Image2.png> <./Images/Image1.png> <./Images/Image5.png> <./Images/Im
+ <./Images/Image2.png> <./Images/Image1.png> <./Images/Image4.png> <./Images/Im
 age3.png>] [6
 
 ] [7
 
 ]
-<Images/Image6.png, id=119, 395.4775pt x 279.0425pt>
-File: Images/Image6.png Graphic file (type png)
-<use Images/Image6.png>
-Package pdftex.def Info: Images/Image6.png  used on input line 138.
-(pdftex.def)             Requested size: 138.2795pt x 97.5684pt.
-<Images/Image12.png, id=120, 360.34625pt x 250.9375pt>
-File: Images/Image12.png Graphic file (type png)
-<use Images/Image12.png>
-Package pdftex.def Info: Images/Image12.png  used on input line 138.
-(pdftex.def)             Requested size: 138.2795pt x 96.29533pt.
- [8
-
- <./Images/Image6.png> <./Images/Image12.png>]
-<Images/Image8.png, id=132, 997.7275pt x 279.0425pt>
+<Images/Image8.png, id=127, 997.7275pt x 279.0425pt>
 File: Images/Image8.png Graphic file (type png)
 <use Images/Image8.png>
-Package pdftex.def Info: Images/Image8.png  used on input line 159.
+Package pdftex.def Info: Images/Image8.png  used on input line 138.
 (pdftex.def)             Requested size: 276.559pt x 77.34792pt.
+ [8
 
-[9
+ <./Images/Image8.png>]
+<Images/Image9test.png, id=138, 393.47pt x 265.99374pt>
+File: Images/Image9test.png Graphic file (type png)
+<use Images/Image9test.png>
+Package pdftex.def Info: Images/Image9test.png  used on input line 155.
+(pdftex.def)             Requested size: 138.2795pt x 93.47665pt.
+<Images/Image10.png, id=139, 386.44376pt x 283.0575pt>
+File: Images/Image10.png Graphic file (type png)
+<use Images/Image10.png>
+Package pdftex.def Info: Images/Image10.png  used on input line 155.
+(pdftex.def)             Requested size: 138.2795pt x 101.28297pt.
+<Images/image13.png, id=140, 395.4775pt x 279.0425pt>
+File: Images/image13.png Graphic file (type png)
+<use Images/image13.png>
+Package pdftex.def Info: Images/image13.png  used on input line 155.
+(pdftex.def)             Requested size: 138.2795pt x 97.5684pt.
+<Images/Image11.png, id=141, 393.47pt x 283.0575pt>
+File: Images/Image11.png Graphic file (type png)
+<use Images/Image11.png>
+Package pdftex.def Info: Images/Image11.png  used on input line 155.
+(pdftex.def)             Requested size: 138.2795pt x 99.47328pt.
+ [9
 
- <./Images/Image8.png>] [10
-
-] [11
+ <./Images/Image9test.png> <./Images/Image10.png> <./Images/Image13.png> <./Ima
+ges/Image11.png>] [10
 
 ]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\translate ' on input line 180.
+
+[11
+
+]
+<Images/Image6.png, id=172, 395.4775pt x 279.0425pt>
+File: Images/Image6.png Graphic file (type png)
+<use Images/Image6.png>
+Package pdftex.def Info: Images/Image6.png  used on input line 202.
+(pdftex.def)             Requested size: 138.2795pt x 97.5684pt.
+<Images/Image12.png, id=173, 360.34625pt x 250.9375pt>
+File: Images/Image12.png Graphic file (type png)
+<use Images/Image12.png>
+Package pdftex.def Info: Images/Image12.png  used on input line 202.
+(pdftex.def)             Requested size: 138.2795pt x 96.29533pt.
+ [12
+
+ <./Images/Image6.png> <./Images/Image12.png>]
+<Images/Image14.png, id=183, 395.4775pt x 279.0425pt>
+File: Images/Image14.png Graphic file (type png)
+<use Images/Image14.png>
+Package pdftex.def Info: Images/Image14.png  used on input line 216.
+(pdftex.def)             Requested size: 138.2795pt x 97.5684pt.
+ [13
+
+ <./Images/Image14.png>]
+File: Images/Image9test.png Graphic file (type png)
+<use Images/Image9test.png>
+Package pdftex.def Info: Images/Image9test.png  used on input line 234.
+(pdftex.def)             Requested size: 130.59912pt x 88.28554pt.
+<Images/Image9full.png, id=193, 399.4925pt x 265.99374pt>
+File: Images/Image9full.png Graphic file (type png)
+<use Images/Image9full.png>
+Package pdftex.def Info: Images/Image9full.png  used on input line 234.
+(pdftex.def)             Requested size: 130.59912pt x 86.95427pt.
+ [14
+
+ <./Images/Image9full.png>]
 \tf@nav=\write6
 \openout6 = `BarkelooNationwideMRM.nav'.
 
@@ -940,19 +988,19 @@ Package pdftex.def Info: Images/Image8.png  used on input line 159.
 \tf@snm=\write8
 \openout8 = `BarkelooNationwideMRM.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 202.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 202.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 236.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 236.
  (./BarkelooNationwideMRM.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 202.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 202.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 236.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 236.
 Package rerunfilecheck Info: File `BarkelooNationwideMRM.out' has not changed.
-(rerunfilecheck)             Checksum: 25667BDD78F3A39A89D8148EDC4DB433;222.
+(rerunfilecheck)             Checksum: 02E0A1B32C44B8EEB641C51784D4D0AA;312.
  ) 
 Here is how much of TeX's memory you used:
- 18264 strings out of 492616
- 346518 string characters out of 6132783
- 425086 words of memory out of 5000000
- 21742 multiletter control sequences out of 15000+600000
+ 18324 strings out of 492616
+ 347433 string characters out of 6132783
+ 425094 words of memory out of 5000000
+ 21788 multiletter control sequences out of 15000+600000
  8041 words of font info for 30 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,19n,55p,805b,559s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -965,10 +1013,10 @@ ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2018/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb><c:/texlive/2018/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/texlive/2018/texmf-dist/fonts/typ
 e1/public/amsfonts/symbols/msam10.pfb>
-Output written on BarkelooNationwideMRM.pdf (11 pages, 142096 bytes).
+Output written on BarkelooNationwideMRM.pdf (14 pages, 200051 bytes).
 PDF statistics:
- 188 PDF objects out of 1000 (max. 8388607)
- 144 compressed objects within 2 object streams
- 28 named destinations out of 1000 (max. 500000)
- 110 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 229 PDF objects out of 1000 (max. 8388607)
+ 170 compressed objects within 2 object streams
+ 36 named destinations out of 1000 (max. 500000)
+ 156 words of extra memory for PDF output out of 10000 (max. 10000000)
 

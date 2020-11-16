@@ -52,7 +52,7 @@ Summary of 30,000 individuals
 \end{itemize}
 Want to build a model that will optimize recognition of accident events using these values and attempt to categorize riskier drivers from less risky drivers
 Ideal model would have nice bifurcation between classes, difficult to get without more discriminating variables with separation power
-
+Area under ROC curve can be used a a way to classify the model in comparison to other models
 %\centering
 %\includegraphics[width=0.7\textwidth]{../../ThesisImages/backgrounds.png}
 }
@@ -68,7 +68,7 @@ Ideal model would have nice bifurcation between classes, difficult to get withou
 \includegraphics[width=0.9\textwidth]{Images/Image1.png}
 \end{column}
 \begin{column}{0.5\textwidth}
-\includegraphics[width=0.9\textwidth]{Images/Image5.png}
+\includegraphics[width=0.8\textwidth]{Images/Image4.png}
 \includegraphics[width=0.9\textwidth]{Images/Image3.png}
 \end{column}
 \end{columns}
@@ -97,7 +97,7 @@ The null hypothesis can be rejected for all combinations of Vehicle Types \\
 \begin{itemize}
 \item z value for High School and College: 0.27
 \end{itemize}
-The null hypothesis cannot be rejected for Education Types, as such for my models they will be combined and education type not used as a potential discriminator \\~\\
+The null hypothesis cannot be rejected for Education Type, as such for my models they will be combined and education type not used as a potential discriminator \\~\\
 Categorical variables are changed to numbers using one-hot encoding to prevent ranking errors during model building and testing.
 }
 
@@ -110,9 +110,8 @@ Categorical variables are changed to numbers using one-hot encoding to prevent r
 \frame{\frametitle{Model Building}
 A variety of models were employeed to different ends to try and create a binary classification of risk.  Multiple collision events are classified with single collision events.  With more data a third category of excessive risk could be added to models.  \\~\\
 Small minority class, small percentage of those are multiple collision events. \\~\\
-Models presented here (with smote oversampling training data):
+Model presented here (with smote oversampling training data):
 \begin{itemize}
-\item Logistic Regression
 \item Boosted Decision Tree (BDT) 
 \end{itemize}
 A training (80\%)/testing(20\%) random set split was done to help ensure unbiased results
@@ -120,26 +119,9 @@ A training (80\%)/testing(20\%) random set split was done to help ensure unbiase
 %\includegraphics[width=0.7\textwidth]{../../ThesisImages/backgrounds.png}
 }
 
-\frame{\frametitle{Multivariate Logistic Regression}
-\begin{itemize}
-\item Naively we could train a model on the data classes as given
-\item With enough separation power i.e., variables distinct enough in each class, this can be used for event classification
-\item SMOTE Oversampling used to generate synthetic data that is similar to, but not exactly like the minority class, using a nearest-neighbors approach and fills in space between neighbors
-\item Balanced Accuracy score: 0.559, Loss Event Accuracy: 0.575
-\end{itemize}
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\includegraphics[width=0.9\textwidth]{Images/Image6.png}
-\end{column}
-\begin{column}{0.5\textwidth}
-\includegraphics[width=0.9\textwidth]{Images/Image12.png}
-\end{column}
-\end{columns}
-}
-
 \frame{\frametitle{BDT with SMOTE Upsampling}
 \begin{itemize}
-\item A BDT was created and trained using SMOTE over-sampling with similar results
+\item SMOTE Oversampling used to generate synthetic data that is similar to, but not exactly like the minority class, using a nearest-neighbors approach and fills in space between neighbors
 \item F Scores can give insight into separation powers of training variables
 \item Weight: How frequent splitting occurs on the variable
 \item Gain: How useful variable is in terms of separation
@@ -153,37 +135,37 @@ A training (80\%)/testing(20\%) random set split was done to help ensure unbiase
 %\includegraphics[width=0.9\textwidth]{Images/Image16.png}
 \end{column}
 \end{columns}
-Loss Events P(Loss Event): mean: 0.510, std: 0.096 \\
-NoLoss Events P(LossEvent): mean: 0.480, std: 0.097 \\
-Loss Event Accuracy: 55.7\%
 }
 
-\frame{\frametitle{Model Comments}
-\begin{itemize}
-\item  Neural networks have been created and trained on a limited set of input variable with success in determination of Loss events
-\item The addition of further independent input variables would help the separation of the neural network greatly
-\item A bifurcation of the distributions is starting to occur with the ADASYN network, more input variables and events is likely to cause a major splitting of the distribution into likely Loss events and likely NoLoss events \\
-%\item ADASYN over-sampling focuses on the decision boundary which leads to large flucuations in the validation accuracy
-\item Boosted decision tree (BDT) models were also employed in the Jupyter notebook to slightly different ends
-\end{itemize}
-}
+\frame{\frametitle{BDT with SMOTE Upsampling}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=0.9\textwidth]{Images/Image9test.png}
 
-%\frame{\frametitle{}
-%}
+\includegraphics[width=0.9\textwidth]{Images/Image10.png}
+\end{column}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=0.9\textwidth]{Images/image13.png}
+
+\includegraphics[width=0.9\textwidth]{Images/Image11.png}
+\end{column}
+\end{columns}
+Balanced Accuracy Score: 0.553
+Area Under ROC: 0.55
+}
 
 \section{Model Assessment}
 
 \subsection{Model Limitations}
-\frame{\frametitle{Title}
-Can Multiple Loss Models be Useful Based on Driver Class i.e., Rural Vs. Urban Drivers?
+\frame{\frametitle{Model Comments and Limitations}
 \begin{itemize}
-\item Rural and Urban drivers face different landscapes of challenges on their daily travels
-\item Requirement: GPS definition of urban environments
-\item Expect longer distance/trip for rural drivers while urban drivers have more stop-and-go traffic 
-\item Larger Distances and a larger amount of HardAccelerations are both positvely correlated with loss this seems to be an interesting intersection of these correlations
+\item BDT probably overkill with this amount of data/variables, especially given correlations
+\item Overtuning difficult to avoid/hyperparameters must be adjusted
+\item Samilar result i.e., area under ROC curve as Multivariate Logistic Regression (See Backup)
+\item The BDT model over estimates Standard and Luxury loss from no loss cases.  This is most likely do the class makeup that wasnt fully taken into account due to time
+\item Essentially the model asserts that cars (both types) are significantly riskier than trucks.  This seems logical as trucks exist in a separate cargo-loading domain as opposed to cars
+\item Further data i.e., driving data, would allow this model to be further generalized and the classes further separated
 \end{itemize}
-\centering
-%\includegraphics[width=0.4\textwidth]{Images/image18.png}
 }
 
 %\frame{\frametitle{Conclusion}
@@ -195,10 +177,62 @@ Can Multiple Loss Models be Useful Based on Driver Class i.e., Rural Vs. Urban D
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 	
-%\appendix
-%\section{Backup}
-%\frame{\frametitle{Backup}
-%}
+\appendix
+
+
+
+\section{Backup}
+\frame{\frametitle{Backup}
+}
+
+\frame{\frametitle{Multivariate Logistic Regression}
+\begin{itemize}
+\item Naively we could train a model on the data classes as given
+\item With enough separation power i.e., variables distinct enough in each class, this can be used for event classification
+\item Balanced Accuracy score: 0.559, Area Under ROC: 0.55
+\end{itemize}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=0.9\textwidth]{Images/Image6.png}
+\end{column}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=0.9\textwidth]{Images/Image12.png}
+\end{column}
+\end{columns}
+}
+
+\frame{\frametitle{Single Variable Logistic Regression}
+\begin{itemize}
+\item The simplest model would be to use the highest correlated variable in a single variable logistic regression to classify events
+\item Income is highest noncategorical correlated variable to Accidents
+\item Balanced Accuracy score: 0.529, Area Under ROC:0.53
+\item There is something to be gained including another highly correlated variable (age) here
+\end{itemize}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=0.9\textwidth]{Images/Image14.png}
+\end{column}
+\end{columns}
+}
+
+
+\frame{\frametitle{BDT with SMOTE Upsampling}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+Testing Set
+\includegraphics[width=0.85\textwidth]{Images/Image9test.png}
+
+\end{column}
+\begin{column}{0.5\textwidth}
+Full Set
+\includegraphics[width=0.85\textwidth]{Images/Image9full.png}
+
+\end{column}
+\end{columns}
+Balanced Accuracy Score: 0.553
+Area Under ROC: 0.55
+}
+
 \end{document}
 
 %36.070
