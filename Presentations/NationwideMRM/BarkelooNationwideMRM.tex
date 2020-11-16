@@ -31,7 +31,7 @@
 
 \frame{\frametitle{Code location for further fleshed out examples}
 
-All code for these exercises can be found via this hyperlink as ipython/jupyter notebooks located on my github in addition to attachments sent with the presentation: \\~\\
+All code for these exercises can be found via this hyperlink as a ipython/jupyter notebook located on my github in addition to attachments sent with the presentation: \\~\\
 
 
 \hyperlink{https://github.com/JTBarkeloo/JupyterNotebooks/blob/master/MRM Assessment.ipynb}{https://github.com/JTBarkeloo/JupyterNotebooks/blob/master/MRM Assessment.ipynb} 
@@ -41,17 +41,34 @@ All code for these exercises can be found via this hyperlink as ipython/jupyter 
 \section{Exploratory Analysis}
 
 \frame{\frametitle{Exploratory Data Analysis}
+Summary of 30,000 individuals
 \begin{itemize}
-\item Start by looking at behavior of noncategorical data
+\item age - Age of customer
+\item inc - Income of customer
+\item car - Category of car: Standard, Luxury, Truck
+\item edu - Education level of driver (High School or College)
+\item acc - Number of accidents over the last two years
+
+\end{itemize}
+Want to build a model that will optimize recognition of accident events using these values and attempt to categorize riskier drivers from less risky drivers
+Ideal model would have nice bifurcation between classes, difficult to get without more discriminating variables with separation power
+
+%\centering
+%\includegraphics[width=0.7\textwidth]{../../ThesisImages/backgrounds.png}
+}
+
+\frame{\frametitle{Exploratory Data Analysis}
+\begin{itemize}
+\item Start by looking at behavior of noncategorical data, Age is oddly uniform
 \end{itemize}
 \centering
-\includegraphics[width=0.45\textwidth]{Images/Image1.png}
 \begin{columns}
 \begin{column}{0.5\textwidth}
-
 \includegraphics[width=0.9\textwidth]{Images/Image2.png}
+\includegraphics[width=0.9\textwidth]{Images/Image1.png}
 \end{column}
 \begin{column}{0.5\textwidth}
+\includegraphics[width=0.9\textwidth]{Images/Image5.png}
 \includegraphics[width=0.9\textwidth]{Images/Image3.png}
 \end{column}
 \end{columns}
@@ -65,77 +82,68 @@ All code for these exercises can be found via this hyperlink as ipython/jupyter 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Model Building}
-\frame{\frametitle{Model Building}
-Summary of 30,000 vehicles 1Hz telematics datasets
-\begin{itemize}
-\item Vehicle - Effectively an index on the data
-\item Days - Number of days data was collected (365 for all)
-\item Distance - Total number of miles vehicle was driven during data collection
-\item HardBrakes - Number of hard braking events detected
-\item HardAccelerations - Number of hard acceleration events detected
-\item NightTime\_Pct - Percentage of total miles driven at night
-\item VehicleType - str description of type of vehicle
-\item Loss - Indicator if vehicle has been in a collision
-\end{itemize}
-Want to build a model that will optimize recognition of Loss events using these values
-%\centering
-%\includegraphics[width=0.7\textwidth]{../../ThesisImages/backgrounds.png}
-}
 
-\frame{\frametitle{Statistical Significance Between Vehicle Types}
-The conclusions to be drawn depend on how liberal the definition of statistical significance being used is \\ 
+
+
+\frame{\frametitle{Statistical Significance: Vehicle and Education Types}
+Z-test used, conclusions to be drawn depend on how liberal the definition of statistical significance being used is \\ 
 The use of p$<$0.05 is somewhat arbitrary but is what will be used here as it is a standard choice of convention
 \begin{itemize}
-\item \fbox{z value for Car and Minivan: 2.48} 
-\item z value for Car and SUV: 4.19 
-\item z value for Car and Truck: 2.96 
-\item z value for Minivan and SUV: 4.59 
-\item z value for Minivan and Truck: 3.92 
-\item \fbox{z value for SUV and Truck: 1.62} 
+\item z value for Standard and Luxury: 3.64
+\item z value for Standard and SUV: 5.31 
+\item z value for Luxury and Truck: 7.11 
 \end{itemize}
-The null hypothesis cannot be rejected for the combination of Cars and Minivans and the combination of SUVs and Trucks \\
-The implication then is that there are 2 distributions being sampled for these simulated events. This matches intuition as Trucks/SUVs exist in a cargo-loading domain while Cars/Minivans are what parents may gravitate toward% which would describe the necessity of multiple distributions
+The null hypothesis can be rejected for all combinations of Vehicle Types \\
+\begin{itemize}
+\item z value for High School and College: 0.27
+\end{itemize}
+The null hypothesis cannot be rejected for Education Types, as such for my models they will be combined and education type not used as a potential discriminator \\~\\
+Categorical variables are changed to numbers using one-hot encoding to prevent ranking errors during model building and testing.
 }
 
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Model Building}
+\section{Model Building}
 
 \frame{\frametitle{Model Building}
-Primarily employing densely connected feed forward neural networks for event classification was chosen as it is the machine learning model I have most experience with for binary classification
+A variety of models were employeed to different ends to try and create a binary classification of risk.  Multiple collision events are classified with single collision events.  With more data a third category of excessive risk could be added to models.  \\~\\
+Small minority class, small percentage of those are multiple collision events. \\~\\
+Models presented here (with smote oversampling training data):
 \begin{itemize}
-\item 1 input layer with all potentially useful features (Distance, HardBrakes, HardAccelerations, NightTime\_Pct, VehicleType)
-\item blah
+\item Logistic Regression
+\item Boosted Decision Tree (BDT) 
 \end{itemize}
-A training (64\%)/testing(16\%)/validation(16\%) random set split was done to help ensure unbiased results
+A training (80\%)/testing(20\%) random set split was done to help ensure unbiased results
 %\centering
 %\includegraphics[width=0.7\textwidth]{../../ThesisImages/backgrounds.png}
 }
 
-\frame{\frametitle{Naive Approach Neural Network}
+\frame{\frametitle{Multivariate Logistic Regression}
 \begin{itemize}
-\item Naively we could train a neural network on the data classes as given
+\item Naively we could train a model on the data classes as given
 \item With enough separation power i.e., variables distinct enough in each class, this can be used for event classification
-\item This is not the case for this dataset, only a few variables inputs with a lot of distribution overlap
-\item This would then be expected to fail with a total accuracy that trends toward the class representation of the majority class, which is seen here
+\item SMOTE Oversampling used to generate synthetic data that is similar to, but not exactly like the minority class, using a nearest-neighbors approach and fills in space between neighbors
+\item Balanced Accuracy score: 0.559, Loss Event Accuracy: 0.575
 \end{itemize}
 \begin{columns}
 \begin{column}{0.5\textwidth}
-\includegraphics[width=0.9\textwidth]{Images/Image11.png}
+\includegraphics[width=0.9\textwidth]{Images/Image6.png}
 \end{column}
 \begin{column}{0.5\textwidth}
-%\includegraphics[width=0.9\textwidth]{Images/Image12.png}
+\includegraphics[width=0.9\textwidth]{Images/Image12.png}
 \end{column}
 \end{columns}
 }
 
-\frame{\frametitle{Neural Network with SMOTE Upsampling}
+\frame{\frametitle{BDT with SMOTE Upsampling}
 \begin{itemize}
-\item Another network was created and trained using Synthetic Minority Oversampling Technique (SMOTE) over-sampling with similar results
-\item SMOTE generates synthetic data that is similar to, but not exactly like the minority class, using a nearest-neighbors approach and fills in space between neighbors
+\item A BDT was created and trained using SMOTE over-sampling with similar results
+\item F Scores can give insight into separation powers of training variables
+\item Weight: How frequent splitting occurs on the variable
+\item Gain: How useful variable is in terms of separation
+\includegraphics[width=0.9\textwidth]{Images/Image8.png}
 \end{itemize}
 \begin{columns}
 \begin{column}{0.5\textwidth}
